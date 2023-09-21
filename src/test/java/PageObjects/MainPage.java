@@ -85,5 +85,8 @@ public class MainPage  extends BasePage{
             return false;
         }
     }
+
+    public void renamePlaylist(String playlistId, String newPlaylistName) {
+    }
 }
 
