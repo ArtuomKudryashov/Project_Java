@@ -8,7 +8,7 @@ import PageObjects.LoginPage;
 import PageObjects.MainPage;
 
 public class PlayListTests extends  BaseTest {
-    private WebDriver driver;
+
 
     @Test
     public void playlistTests_createPlaylist_playlistCreated() {
