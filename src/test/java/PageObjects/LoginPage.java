@@ -1,9 +1,6 @@
 package PageObjects;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage {
@@ -12,12 +9,28 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+//    private WebElement getEmailField() {
+//        By emailBy = By.xpath("//*[@type='email']");
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(emailBy));
+//        return driver.findElement(emailBy);
+//
+//    }
     private WebElement getEmailField() {
         By emailBy = By.xpath("//*[@type='email']");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(emailBy));
-        return driver.findElement(emailBy);
-
+        for (int i = 0; i < 10; i++) {
+            try {
+                WebElement email = driver.findElement(emailBy);
+                return  email;
+            } catch (NoSuchElementException ee) {
+                try {
+                    Thread.sleep(200);
+                }catch (InterruptedException xx){}
+            }
+        }
+        throw new TimeoutException("No such element");
     }
+
+
     private WebElement getPasswordField(){
         return driver.findElement(By.xpath("//*[@type='password']"));
     }
