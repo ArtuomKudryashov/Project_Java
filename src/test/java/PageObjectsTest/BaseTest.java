@@ -3,7 +3,6 @@ package PageObjectsTest;
 import enums.BrowserType;
 import helpers.BrowserFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import io.github.bonigarcia.wdm.managers.OperaDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -22,18 +21,8 @@ public class BaseTest {
         userName = "academic198405@gmail.com";
         password = "te$t$tudent";
         wrongpassword = "te$t$tudents";
-        driver = BrowserFactory.getDriver(BrowserType.EDGE);
+        driver = BrowserFactory.getDriver(BrowserType.CHROME);
 
-//        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-//        driver = new ChromeDriver();
-//        WebDriverManager.chromedriver().setup();
-//        driver = new ChromeDriver();
-//        WebDriverManager.firefoxdriver().setup();
-//        driver = new FirefoxDriver();
-//        WebDriverManager.operadriver().setup();
-//        driver = new OperaDriver();
-//        WebDriverManager.edgedriver().setup();
-//        driver = new EdgeDriver();
 
 
     }
