@@ -12,7 +12,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 public class BrowserFactory {
     public static WebDriver getDriver(BrowserType browser){
         switch (browser){
-            case EDGE : return  getEdgeDriver();
+//            case EDGE : return  getEdgeDriver();
 //            case OPERA: return getOperaDriver();
             case FIREFOX: return getFirefoxDriver();
             default:return getChromeDriver();
@@ -30,7 +30,7 @@ public class BrowserFactory {
 
     private static WebDriver getFirefoxDriver() {
         FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("--width=400");
+        options.addArguments("--width=1400");
         options.addArguments("--height=1400");
 //        options.addArguments("--headless");
 
@@ -43,10 +43,10 @@ public class BrowserFactory {
 //        return new OperaDriver();
 //    }
 
-    private static WebDriver getEdgeDriver() {
-        WebDriverManager.edgedriver().setup();
-        return  new EdgeDriver();
-    }
+//    private static WebDriver getEdgeDriver() {
+//        WebDriverManager.edgedriver().setup();
+//        return  new EdgeDriver();
+//    }
 
 
 }
