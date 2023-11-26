@@ -1,10 +1,13 @@
-package PageObjects;
+package pageObjects;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class MainPage  extends BasePage{
+    private static Logger logger = LogManager.getLogger(MainPage.class);
 
 
     public MainPage(WebDriver driver) {
@@ -39,9 +42,12 @@ public class MainPage  extends BasePage{
     }
 
     public String createPlaylist(String playlistName) {
+        logger.debug("Create playLiist with name -> "+playlistName);
+        logger.info("Create Playlist with name -> " +playlistName);
 
         String playlistId = "";
         getPlusButton().click();
+        logger.trace("plus button clicked");
         getNewPlayListItem().click();
         getCreatePlaylistField().sendKeys(playlistName);
         getCreatePlaylistField().sendKeys(Keys.ENTER);
@@ -66,6 +72,7 @@ public class MainPage  extends BasePage{
 
 
     public boolean checkPlaylist(String playlistId, String playlistName) {
+
             JavascriptExecutor js = (JavascriptExecutor) driver;
             By playlistBy = getPlaylistBy(playlistId);
             WebElement playlist= driver.findElement(playlistBy);
@@ -91,6 +98,8 @@ public class MainPage  extends BasePage{
     }
 
     public void renamePlaylist(String playlistId, String newPlaylistName) {
+        logger.debug("Updating playlist id " +playlistId);
+        logger.debug("New playlist name = " + newPlaylistName);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         By playlistBy = getPlaylistBy(playlistId);
         WebElement playlist= driver.findElement(playlistBy);

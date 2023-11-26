@@ -21,8 +21,8 @@ public class BrowserFactory {
     }
     private static WebDriver getChromeDriver() {
         ChromeOptions options = new ChromeOptions();
-//        options.addArguments("window-size=1400,1000");
-//        options.addArguments("--headless");
+        options.addArguments("window-size=1400,1000");
+        options.addArguments("--headless");
         WebDriverManager.chromedriver().setup();
 
         return new ChromeDriver(options);
@@ -30,9 +30,9 @@ public class BrowserFactory {
 
     private static WebDriver getFirefoxDriver() {
         FirefoxOptions options = new FirefoxOptions();
-        options.addArguments("--width=400");
+        options.addArguments("--width=1400");
         options.addArguments("--height=1400");
-//        options.addArguments("--headless");
+        options.addArguments("--headless");
 
         WebDriverManager.firefoxdriver().setup();
         return new FirefoxDriver(options);
@@ -43,10 +43,10 @@ public class BrowserFactory {
 //        return new OperaDriver();
 //    }
 
-    private static WebDriver getEdgeDriver() {
-        WebDriverManager.edgedriver().setup();
-        return  new EdgeDriver();
-    }
+//    private static WebDriver getEdgeDriver() {
+//        WebDriverManager.edgedriver().setup();
+//        return  new EdgeDriver();
+//    }
 
 
 }
