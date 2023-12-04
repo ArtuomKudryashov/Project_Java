@@ -10,6 +10,10 @@ public class Pet {
     private Tag [] tags;
     private Status status;
 
+    public Pet() {
+    }
+
+
     public Pet( String name, Category category, String[] photoUrls, Tag[] tags, Status status) {
         this.name = name;
         this.category = category;
@@ -41,4 +45,7 @@ public class Pet {
     public Status getStatus() {
         return status;
     }
+
+
+
 }
