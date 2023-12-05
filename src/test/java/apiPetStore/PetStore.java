@@ -48,17 +48,19 @@ public class PetStore {
                 .statusCode(200)
                 .extract()
                 .response();
-        response.print();
-        response.prettyPrint();
+//        response.print();
+//        response.prettyPrint();
 
         JsonPath jsonPath = response.jsonPath();
         Pet responsePet = jsonPath.getObject("$",Pet.class);
-//        Assert.assertEquals(responsePet.getName(),pet.getName());
+
         Category responseCategory = jsonPath.getObject("category",Category.class);
 
 
-//
-        System.out.println(responsePet.getName());
+
+        System.out.println(responseCategory.getName());
+        System.out.println(responsePet.getCategory().getName());
+
 
     }
 }
