@@ -1,13 +1,14 @@
 package helpers;
 
 import com.github.javafaker.Faker;
-import models.Category;
-import models.Pet;
-import models.Status;
-import models.Tag;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
+import models.*;
 import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.Random;
+
+import static io.restassured.RestAssured.given;
 
 public class TestDataGenerator {
     public static String getString(int length){
@@ -27,5 +28,27 @@ public class TestDataGenerator {
 
         return new Pet (name, category, photoUrls, tags, Status.pending);
 
+    }
+    public  static CreatePlaylistRequest getPlaylistRequest(){
+        Faker faker = new Faker();
+        return  new CreatePlaylistRequest(faker.artist().name());
+    }
+
+    public static String getToken() {
+        Credentials credentials = new Credentials("academic198405@gmail.com","te$t$tudent");
+        Response response = given()
+                .baseUri("https://qa.koel.app/")
+                .basePath("api/me")
+                .header("Content-Type", "application/json")
+                .body(credentials)
+                .when()
+                .post()
+                .then()
+                .statusCode(200)
+                .extract()
+                .response();
+
+        JsonPath jsonPath = response.jsonPath();
+        return "Bearer "+ jsonPath.getString("token");
     }
 }

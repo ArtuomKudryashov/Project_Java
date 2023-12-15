@@ -15,12 +15,14 @@ public class Pet {
 
 
     public Pet( String name, Category category, String[] photoUrls, Tag[] tags, Status status) {
+
         this.name = name;
         this.category = category;
         this.photoUrls = photoUrls;
         this.tags = tags;
         this.status = status;
     }
+
 
     public long getId() {
         return id;
@@ -46,6 +48,7 @@ public class Pet {
         return status;
     }
 
-
-
+    public void setId(long id) {
+        this.id = id;
+    }
 }
